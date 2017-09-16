@@ -14,12 +14,12 @@ public class CalculatorTest {
 
     @Test
     public void canAddTwoPositiveIntegers() {
-        assertEquals("10 + 20 should return 30", 30, Calculator.add(10, 20));
+        assertEquals("10 + 20 should return 30", 31, Calculator.add(10, 20));
     }
 
     @Test
     public void canSubtractTwoPositiveIntegers() {
-        assertEquals("20 - 10 shoukd return 10", 11, Calculator.substract(20, 10));
+        assertEquals("20 - 10 shoukd return 10", 10, Calculator.substract(20, 10));
     }
 
     @Test(expected = ArithmeticException.class)
