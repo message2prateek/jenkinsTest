@@ -19,7 +19,7 @@ public class CalculatorTest {
 
     @Test
     public void canSubtractTwoPositiveIntegers() {
-        assertEquals("20 - 10 shoukd return 10", 10, Calculator.substract(20, 10));
+        assertEquals("20 - 10 shoukd return 10", 11, Calculator.substract(20, 10));
     }
 
     @Test(expected = ArithmeticException.class)
