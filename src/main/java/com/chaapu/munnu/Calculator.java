@@ -13,13 +13,13 @@ public class Calculator {
     }
 
     /**
-     * Substract two integers
+     * Subtract two integers
      *
      * @param int1 first integer
      * @param int2 second integer
      * @return first integer minus second integer
      */
-    public static int substract(int int1, int int2) {
+    public static int subtract(int int1, int int2) {
         return int1 - int2;
     }
 
@@ -30,7 +30,7 @@ public class Calculator {
      * @param int2 second integer
      * @return first integer multiplied by second integer
      */
-    public int multiply(int int1, int int2) {
+    public static int multiply(int int1, int int2) {
         return int1 * int2;
     }
 
