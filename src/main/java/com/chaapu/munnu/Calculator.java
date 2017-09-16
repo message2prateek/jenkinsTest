@@ -41,7 +41,7 @@ public class Calculator {
      * @param int2 second integer
      * @return first integer divided by second
      */
-    public double divide(int int1, int int2) {
+    public static double divide(int int1, int int2) {
         return int1 / int2;
     }
 }

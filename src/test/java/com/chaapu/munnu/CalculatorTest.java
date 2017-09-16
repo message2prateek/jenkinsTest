@@ -1,6 +1,7 @@
 package com.chaapu.munnu;
 
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,5 +20,10 @@ public class CalculatorTest {
     @Test
     public void canSubtractTwoPositiveIntegers() {
         assertEquals("20 - 10 shoukd return 10", 10, Calculator.substract(20, 10));
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void verifyDivisionByZeroReturnsException() {
+        Calculator.divide(10, 0);
     }
 }
