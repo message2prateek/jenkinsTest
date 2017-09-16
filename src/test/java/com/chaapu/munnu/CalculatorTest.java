@@ -14,7 +14,7 @@ public class CalculatorTest {
 
     @Test
     public void canAddTwoPositiveIntegers() {
-        assertEquals("10 + 20 should return 30", 31, Calculator.add(10, 20));
+        assertEquals("10 + 20 should return 30", 30, Calculator.add(10, 20));
     }
 
     @Test
