@@ -9,6 +9,8 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 
@@ -46,8 +48,10 @@ public class WebDriverFixture {
 
     @Before
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "D:\\Prateek\\Softwares\\chromedriver_win32\\chromedriver.exe");
-        driver = new ChromeDriver();
+        System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/bin/geckodriver");
+        DesiredCapabilities desiredCapabilities = DesiredCapabilities.firefox();
+        desiredCapabilities.setCapability("marionette",true);
+        driver = new FirefoxDriver();
     }
 
     @After

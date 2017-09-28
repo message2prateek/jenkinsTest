@@ -10,11 +10,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 @RunWith(ConcordionRunner.class)
 public class WebTest extends WebDriverFixture {
     public void navigateToPage() {
-        getWebDriver().get(System.getProperty("user.dir") + "/src/main/java/com/chaapu/web/HelloWorld.html");
+        getWebDriver().get("file:///" + System.getProperty("user.dir") + "/src/main/java/com/chaapu/web/HelloWorld.html");
     }
 
     public boolean isHeadingDisplayed() {
-        WebElement heading = new WebDriverWait(getWebDriver(), 13).until(ExpectedConditions.visibilityOfElementLocated(By.id("heading")));
+        WebElement heading = new WebDriverWait(getWebDriver(), 2).until(ExpectedConditions.visibilityOfElementLocated(By.id("heading")));
         return heading
                 .getText()
                 .equals("This below is a list of important stuff");
