@@ -4,8 +4,8 @@ LABEL maintainer="message2prateek@gmail.com"
  	mkdir /opt/gradle &&\
  	unzip -d /opt/gradle gradle-4.2-bin.zip &&\
 	export PATH=$PATH:/opt/gradle/gradle-4.2/bin
-COPY . /home/master/Documents/Padhai/jenkinsTest
+COPY $PWD /home/master/Documents/Padhai/jenkinsTest
 WORKDIR /home/master/Documents/Padhai/jenkinsTest
 RUN chmod +x gradlew 
-# ENTRYPOINT ["./gradlew"]
-# CMD ["test"]
+ENTRYPOINT ["./gradlew"]
+CMD ["test"]
