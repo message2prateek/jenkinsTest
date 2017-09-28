@@ -14,7 +14,7 @@ public class WebTest extends WebDriverFixture {
     }
 
     public boolean isHeadingDisplayed() {
-        WebElement heading = new WebDriverWait(getWebDriver(), 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("heading")));
+        WebElement heading = new WebDriverWait(getWebDriver(), 13).until(ExpectedConditions.visibilityOfElementLocated(By.id("heading")));
         return heading
                 .getText()
                 .equals("This below is a list of important stuff");

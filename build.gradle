@@ -38,6 +38,15 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
+task runUnitTests(type: Test, dependsOn: testClasses){
+    include 'com/chaapu/munnu/**'
+}
+
+task runIntegrationTests(type: Test, dependsOn: testClasses){
+    include 'com/chaapu/web/**'
+}
+
 task wrapper(type: Wrapper) {
     gradleVersion = '4.2'
 }
+
