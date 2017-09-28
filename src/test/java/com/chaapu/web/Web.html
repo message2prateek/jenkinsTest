@@ -1,0 +1,43 @@
+<html xmlns:c="http://www.concordion.org/2007/concordion">
+<head>
+    <link href="../../concordion.css" rel="stylesheet" type="text/css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+    <div>
+        <h3>Example: User can see the page heading</h3>
+        <dl>
+            <dt>Given:</dt>
+            <dd>I am user of the internet</dd>
+        </dl>
+        <dl>
+            <dt>When:</dt>
+            <dd c:execute="navigateToPage()">I navigate to the awesome page</dd>
+        </dl>
+        <dl>
+            <dt>Then:</dt>
+            <dd c:assert-true="isHeadingDisplayed()">I can see the page heading</dd>
+        </dl>
+    </div>
+</div>
+<div>
+    <div>
+        <h3>Example: User can see the list of items</h3>
+        <dl>
+            <dt>Given:</dt>
+            <dd>I am user of the internet</dd>
+        </dl>
+        <dl>
+            <dt>When:</dt>
+            <dd c:execute="navigateToPage()">I navigate to the awesome page</dd>
+        </dl>
+        <dl>
+            <dt>Then:</dt>
+            <dd c:assertTrue="areItemsDisplayed()"> User can see 3 items in total</dd>
+        </dl>
+    </div>
+</div>
+
+</body>
+</html>
