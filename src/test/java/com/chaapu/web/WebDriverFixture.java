@@ -48,6 +48,7 @@ public class WebDriverFixture {
 
     @Before
     public void setup() {
+        LOG.info("Gecko driver Directory = " + System.getProperty("user.dir") + "/bin/geckodriver");
         System.setProperty("webdriver.firefox.marionette", System.getProperty("user.dir") + "/bin/geckodriver");
         driver = new FirefoxDriver();
     }
