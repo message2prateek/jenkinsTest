@@ -48,9 +48,7 @@ public class WebDriverFixture {
 
     @Before
     public void setup() {
-        System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/bin/geckodriver");
-        DesiredCapabilities desiredCapabilities = DesiredCapabilities.firefox();
-        desiredCapabilities.setCapability("marionette",true);
+        System.setProperty("webdriver.firefox.marionette", System.getProperty("user.dir") + "/bin/geckodriver");
         driver = new FirefoxDriver();
     }
 
