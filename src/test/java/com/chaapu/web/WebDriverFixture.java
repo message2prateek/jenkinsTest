@@ -48,6 +48,8 @@ public class WebDriverFixture {
 
     @Before
     public void setup() {
+        File firefoxPathBinary = new File("/usr/lib/firefox/firefox");
+        System.setProperty("webdriver.firefox.bin", firefoxPathBinary.getAbsolutePath());
         LOG.info("Gecko driver Directory = " + System.getProperty("user.dir") + "/bin/geckodriver");
         System.setProperty("webdriver.firefox.marionette", System.getProperty("user.dir") + "/bin/geckodriver");
         driver = new FirefoxDriver();
