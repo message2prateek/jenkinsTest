@@ -1,4 +1,4 @@
-package com.chaapu.web;
+package com.chaapu.webdriver;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -7,12 +7,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.io.File;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 
 public class WebDriverFixture {
@@ -29,12 +25,11 @@ public class WebDriverFixture {
         startTimeInSeconds = System.currentTimeMillis() / 1000;
     }
 
-    private static String getTimeSoFarInSeconds() {
+    private static void getTimeSoFarInSeconds() {
         long timeNow = System.currentTimeMillis() / 1000;
 
         String secondsTaken = String.valueOf(timeNow - startTimeInSeconds);
         LOG.info("Time taken (secs) for specification execution so far: " + secondsTaken);
-        return secondsTaken;
     }
 
     protected static WebDriver getWebDriver() {
@@ -48,11 +43,12 @@ public class WebDriverFixture {
 
     @Before
     public void setup() {
-        File firefoxPathBinary = new File("/usr/lib/firefox/firefox");
-        System.setProperty("webdriver.firefox.bin", firefoxPathBinary.getAbsolutePath());
         LOG.info("Gecko driver Directory = " + System.getProperty("user.dir") + "/bin/geckodriver");
         System.setProperty("webdriver.firefox.marionette", System.getProperty("user.dir") + "/bin/geckodriver");
-        driver = new FirefoxDriver();
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.setBinary("/usr/lib/firefox/firefox");
+        firefoxOptions.setCapability("marionette", true);
+        driver = new FirefoxDriver(firefoxOptions);
     }
 
     @After
