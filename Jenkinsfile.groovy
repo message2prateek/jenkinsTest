@@ -1,7 +1,10 @@
-node {
+#!/usr/bin/env groovy
+
+pipeline {
+    agent any
+stages {
    stage('Pull Code') {
        git 'https://github.com/message2prateek/jenkinsTest.git'
-
    }
 
    stage('Run unit test'){
@@ -14,4 +17,5 @@ node {
            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/reports/tests/runIntegrationTests', reportFiles: 'index.html', reportName: 'Integration Tests Report', reportTitles: ''])
        }
    }
+}
 }
