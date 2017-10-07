@@ -15,9 +15,9 @@ pipeline {
                 publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/reports/tests/runUnitTests', reportFiles: 'index.html', reportName: 'Unit Tests Report', reportTitles: ''])
             }
         }
-        wrap([$class: 'Xvfb', additionalOptions: '', assignedLabels: '', displayName: 99, displayNameOffset: 0, installationName: 'default Xvfb', timeout: 10]) {
-            stage('Run integration test') {
-                steps {
+        stage('Run integration test') {
+            steps {
+                wrap([$class: 'Xvfb', additionalOptions: '', assignedLabels: '', displayName: 99, displayNameOffset: 0, installationName: 'default Xvfb', timeout: 10]) {
                     sh './gradlew runIntegrationTests'
                     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/reports/tests/runIntegrationTests', reportFiles: 'index.html', reportName: 'Integration Tests Report', reportTitles: ''])
                 }
