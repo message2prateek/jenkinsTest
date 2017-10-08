@@ -7,8 +7,14 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '5'))
         timeout(time: 1, unit: 'HOURS')
     }
-
     stages {
+        
+        stage('Clean workspace') {
+            steps {
+                deleteWs() /* clean up our workspace */
+            }
+        }
+
         stage('Checkout Code') {
             steps {
                 git 'https://github.com/message2prateek/jenkinsTest.git'
@@ -38,12 +44,6 @@ pipeline {
                     }
                 }
             }
-        }
-    }
-
-    post {
-        always {
-            deleteDir() /* clean up our workspace */
         }
     }
 }
