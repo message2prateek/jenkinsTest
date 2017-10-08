@@ -43,7 +43,7 @@ task runUnitTests(type: Test, dependsOn: testClasses){
     include 'com/chaapu/munnu/**'
 }
 
-task runIntegrationTests(type: Test, dependsOn: testClasses){
+task runAcceptanceTests(type: Test, dependsOn: testClasses){
     include 'com/chaapu/web/**'
 }
 
