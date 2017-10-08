@@ -11,6 +11,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
+                cleanWs notFailBuild: true
                 git 'https://github.com/message2prateek/jenkinsTest.git'
             }
         }
@@ -41,10 +42,5 @@ pipeline {
         }
     }
 
-  post {
-      always {
-          deleteDir()
-      }
-  }
 }
 
