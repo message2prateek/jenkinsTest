@@ -8,12 +8,6 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
     }
     stages {
-        
-        stage('Clean workspace') {
-            steps {
-                deleteWs() /* clean up our workspace */
-            }
-        }
 
         stage('Checkout Code') {
             steps {
@@ -46,5 +40,11 @@ pipeline {
             }
         }
     }
+
+  post {
+      always {
+          deleteDir
+      }
+  }
 }
 
