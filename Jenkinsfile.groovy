@@ -21,7 +21,7 @@ pipeline {
             }
             post {
                 always {
-                    junit 'build/test-results/runUnitTests/*.xml'
+                    junit allowEmptyResults: true, testResults: 'build/test-results/runUnitTests/*.xml'
                     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/reports/tests/runUnitTests', reportFiles: 'index.html', reportName: 'Unit Tests Report', reportTitles: ''])
                 }
             }
@@ -33,7 +33,7 @@ pipeline {
                 }
                 post {
                     always {
-                        junit 'build/test-results/runAcceptanceTests/*.xml'
+                        junit allowEmptyResults: true, testResults: 'build/test-results/runAcceptanceTests/*.xml'
                         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/reports/tests/runIntegrationTests', reportFiles: 'index.html', reportName: 'Acceptance Tests Report', reportTitles: ''])
                     }
                 }
