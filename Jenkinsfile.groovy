@@ -37,7 +37,7 @@ pipeline {
             post {
                 always {
                     junit allowEmptyResults: true, testResults: 'build/test-results/runAcceptanceTests/*.xml'
-                    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/reports/tests/runIntegrationTests', reportFiles: 'index.html', reportName: 'Acceptance Tests Report', reportTitles: ''])
+                    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/reports/tests/runAcceptanceTests', reportFiles: 'index.html', reportName: 'Acceptance Tests Report', reportTitles: ''])
                 }
             }
         }
