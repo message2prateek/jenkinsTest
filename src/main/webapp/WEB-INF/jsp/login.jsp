@@ -22,10 +22,10 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" value="Submit" /></td>
+					<td><input type="submit" value="Submit" name="submit" /></td>
 				</tr>
 			</table>
-			<div style="color: red">${error}</div>
+			<div style="color: red" name="error">${error}</div>
 
 		</div>
 	</form:form>

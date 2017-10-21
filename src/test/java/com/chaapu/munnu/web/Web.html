@@ -6,35 +6,36 @@
 <body>
 <div>
     <div>
-        <h3>Example: User can see the page heading</h3>
+        <h3>Example: User can login successfully with valid credentials</h3>
         <dl>
             <dt>Given:</dt>
-            <dd>I am user of the internet</dd>
+            <dd c:execute="navigateToPage()">I am user of the SpringBoot WebApp</dd>
         </dl>
         <dl>
             <dt>When:</dt>
-            <dd c:execute="navigateToPage()">I navigate to the awesome page</dd>
+            <dd c:execute="loginUsingValidCredentials()">I choose to login using valid credentials</dd>
         </dl>
         <dl>
             <dt>Then:</dt>
-            <dd c:assertTrue="isHeadingDisplayed()">I can see the page heading</dd>
+            <dd c:assertTrue="isHomePageDisplayed()">I can see the page heading</dd>
         </dl>
     </div>
 </div>
+
 <div>
     <div>
-        <h3>Example: User can see the list of items</h3>
+        <h3>Example: User can login successfully with valid credentials</h3>
         <dl>
             <dt>Given:</dt>
-            <dd>I am user of the internet</dd>
+            <dd c:execute="navigateToPage()">I am user of the SpringBoot WebApp</dd>
         </dl>
         <dl>
             <dt>When:</dt>
-            <dd c:execute="navigateToPage()">I navigate to the awesome page</dd>
+            <dd c:execute="loginUsingInvalidCredentials()">I choose to login using invalid credentials</dd>
         </dl>
         <dl>
             <dt>Then:</dt>
-            <dd c:assertTrue="areItemsDisplayed()"> User can see 3 items in total</dd>
+            <dd c:assertTrue="isErrorMessageDisplayed()">I can see the page heading</dd>
         </dl>
     </div>
 </div>

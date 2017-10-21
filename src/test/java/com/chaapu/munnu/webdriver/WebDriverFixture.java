@@ -7,13 +7,11 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -57,11 +55,10 @@ public class WebDriverFixture {
 
         } else {
             LOG.info("Gecko driver Directory = " + System.getProperty("user.dir") + "/bin/geckodriver");
-            System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/bin/geckodriver");
-            DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-            capabilities.setCapability("marionette", true);
-            FirefoxBinary firefoxBinary = new FirefoxBinary(new File("/usr/lib/firefox/firefox"));
-            driver = new FirefoxDriver(firefoxBinary, null, capabilities);
+            System.setProperty("webdriver.firefox.marionette", System.getProperty("user.dir") + "/bin/geckodriver");
+            FirefoxOptions firefoxOptions = new FirefoxOptions();
+            firefoxOptions.setBinary("/usr/lib/firefox/firefox");
+            firefoxOptions.setCapability("marionette", true);
         }
     }
 

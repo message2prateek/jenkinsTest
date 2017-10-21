@@ -8,6 +8,7 @@
 </head>
 <body>
 	<font color="green"><h1>Hello</h1></font>
-	<h2>${msg}</h2> You have successfully logged in.
+	<h2>${msg}</h2>
+	<p name="message">You have successfully logged in.</p>
 </body>
 </html>
