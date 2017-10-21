@@ -1,5 +1,5 @@
-package com.chaapu.web;
-import com.chaapu.webdriver.WebDriverFixture;
+package com.chaapu.munnu.web;
+import com.chaapu.munnu.webdriver.WebDriverFixture;
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;

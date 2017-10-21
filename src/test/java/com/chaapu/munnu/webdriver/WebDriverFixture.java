@@ -1,4 +1,4 @@
-package com.chaapu.webdriver;
+package com.chaapu.munnu.webdriver;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -9,6 +9,11 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 
 public class WebDriverFixture {
@@ -42,13 +47,20 @@ public class WebDriverFixture {
     }
 
     @Before
-    public void setup() {
-        LOG.info("Gecko driver Directory = " + System.getProperty("user.dir") + "/bin/geckodriver");
-        System.setProperty("webdriver.firefox.marionette", System.getProperty("user.dir") + "/bin/geckodriver");
-        FirefoxOptions firefoxOptions = new FirefoxOptions();
-        firefoxOptions.setBinary("/usr/lib/firefox/firefox");
-        firefoxOptions.setCapability("marionette", true);
-        driver = new FirefoxDriver(firefoxOptions);
+    public void setup() throws MalformedURLException {
+        boolean remoteRequested = Boolean.parseBoolean(System.getProperty("remote.requested", "false"));
+        if (remoteRequested) {
+            DesiredCapabilities desiredCapabilities = DesiredCapabilities.firefox();
+            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), desiredCapabilities);
+
+        } else {
+            LOG.info("Gecko driver Directory = " + System.getProperty("user.dir") + "/bin/geckodriver");
+            System.setProperty("webdriver.firefox.marionette", System.getProperty("user.dir") + "/bin/geckodriver");
+            FirefoxOptions firefoxOptions = new FirefoxOptions();
+            firefoxOptions.setBinary("/usr/lib/firefox/firefox");
+            firefoxOptions.setCapability("marionette", true);
+            driver = new FirefoxDriver(firefoxOptions);
+        }
     }
 
     @After
