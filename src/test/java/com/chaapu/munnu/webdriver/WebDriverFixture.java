@@ -9,6 +9,7 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.GeckoDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -56,9 +57,9 @@ public class WebDriverFixture {
         } else {
             LOG.info("Gecko driver Directory = " + System.getProperty("user.dir") + "/bin/geckodriver");
             System.setProperty("webdriver.firefox.marionette", System.getProperty("user.dir") + "/bin/geckodriver");
-            FirefoxOptions firefoxOptions = new FirefoxOptions();
-            firefoxOptions.setBinary("/usr/lib/firefox/firefox");
-            firefoxOptions.setCapability("marionette", true);
+
+            FirefoxDriver driver = new FirefoxDriver();
+            driver.get("http://www.google.com");
         }
     }
 

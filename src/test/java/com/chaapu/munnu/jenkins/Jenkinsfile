@@ -1,0 +1,12 @@
+def execute() {
+node {
+    stage('echo') {
+        echo 'hello from something'
+    }
+
+    stage('checkout git'){
+         git 'https://github.com/message2prateek/jenkinsTest.git'
+    }
+}
+}
+return this
