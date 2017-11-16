@@ -12,11 +12,9 @@ import org.springframework.beans.factory.annotation.Value;
 
 @RunWith(ConcordionRunner.class)
 public class WebTest extends WebDriverFixture {
-//    @Value("${server.port}")
-//    private String serverPort;
 
     public void navigateToPage() {
-        getWebDriver().get("localhost:8081");
+        getWebDriver().get("localhost:8081/login");
     }
 
     public boolean isHeadingDisplayed() {
@@ -33,6 +31,7 @@ public class WebTest extends WebDriverFixture {
     }
 
     public boolean isHomePageDisplayed() {
+        new WebDriverWait(getWebDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.name("userName")));
         return getWebDriver().findElement(By.name("message")).isDisplayed();
     }
 
@@ -47,8 +46,8 @@ public class WebTest extends WebDriverFixture {
     private void login(String userName, String password) {
         getWebDriver().findElement(By.name("userName")).sendKeys(userName);
         getWebDriver().findElement(By.name("password")).sendKeys(password);
-        getWebDriver().findElement(By.name("submit"));
-        new WebDriverWait(getWebDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.name("userName")));
+        getWebDriver().findElement(By.name("submit")).click();
+
     }
 
     public boolean isErrorMessageDisplayed() {

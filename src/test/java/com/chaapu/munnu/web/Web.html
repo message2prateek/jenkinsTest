@@ -24,7 +24,7 @@
 
 <div>
     <div>
-        <h3>Example: User can login successfully with valid credentials</h3>
+        <h3>Example: User can't login successfully with invalid credentials</h3>
         <dl>
             <dt>Given:</dt>
             <dd c:execute="navigateToPage()">I am user of the SpringBoot WebApp</dd>
@@ -35,7 +35,7 @@
         </dl>
         <dl>
             <dt>Then:</dt>
-            <dd c:assertTrue="isErrorMessageDisplayed()">I can see the page heading</dd>
+            <dd c:assertTrue="isErrorMessageDisplayed()">I can see an error message</dd>
         </dl>
     </div>
 </div>

@@ -7,9 +7,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.GeckoDriverService;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -51,15 +50,14 @@ public class WebDriverFixture {
     public void setup() throws MalformedURLException {
         boolean remoteRequested = Boolean.parseBoolean(System.getProperty("remote.requested", "false"));
         if (remoteRequested) {
-            DesiredCapabilities desiredCapabilities = DesiredCapabilities.firefox();
+            DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
             driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), desiredCapabilities);
 
         } else {
-            LOG.info("Gecko driver Directory = " + System.getProperty("user.dir") + "/bin/geckodriver");
-            System.setProperty("webdriver.firefox.marionette", System.getProperty("user.dir") + "/bin/geckodriver");
-
-            FirefoxDriver driver = new FirefoxDriver();
-            driver.get("http://www.google.com");
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/bin/chromedriver");
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.setBinary("/usr/bin/google-chrome-stable");
+            driver = new ChromeDriver(chromeOptions);
         }
     }
 
