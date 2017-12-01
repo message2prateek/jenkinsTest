@@ -1,72 +1,18 @@
-plugins {
-    id 'org.springframework.boot' version '1.5.6.RELEASE'
-}
+allprojects {
+    group 'com.gmail.message2prateek'
+    version '1.0-SNAPSHOT'
 
-group 'com.gmail.message2prateek'
-version '1.0-SNAPSHOT'
+    apply plugin: 'java'
 
-apply plugin: 'war'
-apply plugin: 'idea'
+    sourceCompatibility = 1.8
 
-war {
-    baseName = 'loginWebApp'
-    version = '1.0.0'
-}
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
-sourceSets {
-    main {
-        java {
-            srcDirs 'src/main/java'
-        }
-    }
-
-    test {
-        java {
-            srcDir 'src/test/java'
-        }
-        // Concordion looks for the Specification in the resource folder, so make it same as the Fixture folder
-        resources {
-            srcDir 'src/test/java'
-        }
+    repositories {
+        mavenCentral()
     }
 }
-
-dependencies {
-    compile('org.springframework.boot:spring-boot-starter-web')
-//    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    testCompile group: 'org.concordion', name: 'concordion', version: '2.1.1'
-    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.7.1'
-    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.7.1'
-
-
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile 'io.rest-assured:rest-assured:3.0.5'
-    compile group: 'com.google.guava', name: 'guava', version: '22.0'
-
-//    testCompile group:'com.lesfurets', name:'jenkins-pipeline-unit', version:'1.0'
-//    runtime('com.h2database:h2')
-    runtime('javax.servlet:jstl')
-    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
-    providedRuntime('org.apache.tomcat.embed:tomcat-embed-jasper')
-}
-
-task runUnitTests(type: Test, dependsOn: testClasses) {
-    include 'com/chaapu/munnu/integrationtests/**'
-}
-
-task runAcceptanceTests(type: Test, dependsOn: testClasses) {
-    systemProperties=System.properties
-    include 'com/chaapu/munnu/web/**'
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.2'
-}
-
+//project(':acceptanceTests') {
+//    runAcceptanceTests.doFirst {
+//        def userDir = System.getProperty("user.dir")
+//        System.setProperty("controller.chrome.driver", userDir + "/acceptanceTests/bin/chromedriver");
+//    }
+//}

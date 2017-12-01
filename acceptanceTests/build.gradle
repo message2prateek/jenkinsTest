@@ -1,0 +1,35 @@
+group 'com.gmail.message2prateek'
+version '1.0-SNAPSHOT'
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'src/main/java'
+        }
+    }
+
+    test {
+        java {
+            srcDir 'src/test/java'
+        }
+        // Concordion looks for the Specification in the resource folder, so make it same as the Fixture folder
+        resources {
+            srcDir 'src/test/java'
+        }
+    }
+}
+
+dependencies {
+    compile group: 'org.concordion', name: 'concordion', version: '2.1.1'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.7.1'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.7.1'
+}
+
+task runAcceptanceTests(type: Test, dependsOn: testClasses) {
+    systemProperties=System.properties
+    include 'com/chaapu/munnu/controller/**'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.2'
+}

@@ -1,2 +1,3 @@
-rootProject.name = 'jenkins-test'
-
+rootProject.name = 'jenkinsTest'
+include 'acceptanceTests'
+include 'webapp'

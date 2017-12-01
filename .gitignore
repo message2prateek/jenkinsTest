@@ -4,9 +4,12 @@ bin/**
 .classpath/**
 .project/**
 .settings/**
-out/**
+**/out/**
 .idea/**
 *.iml
 
 #Gradle files
 .gradle/**
+**/gradle/**
+**/.gradle/
+**/build/**
