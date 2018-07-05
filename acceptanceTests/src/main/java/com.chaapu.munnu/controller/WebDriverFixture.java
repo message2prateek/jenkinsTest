@@ -54,7 +54,7 @@ public class WebDriverFixture {
             driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), desiredCapabilities);
 
         } else {
-//            System.setProperty("controller.chrome.driver", System.getProperty("user.dir") + "/bin/chromedriver");
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/acceptanceTests/bin/chromedriver");
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.setBinary("/usr/bin/google-chrome-stable");
             driver = new ChromeDriver(chromeOptions);
