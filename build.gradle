@@ -10,9 +10,3 @@ allprojects {
         mavenCentral()
     }
 }
-//project(':acceptanceTests') {
-//    runAcceptanceTests.doFirst {
-//        def userDir = System.getProperty("user.dir")
-//        System.setProperty("controller.chrome.driver", userDir + "/acceptanceTests/bin/chromedriver");
-//    }
-//}
